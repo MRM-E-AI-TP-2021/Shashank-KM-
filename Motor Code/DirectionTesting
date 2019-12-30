@@ -1,0 +1,126 @@
+#include <math.h>
+const int lf = 3;
+const int lb = 5;
+const int rf = 6;
+const int rb = 9;
+const int inX = A1;
+const int inY = A2;
+const int butt = A0; // 
+double bhadwa; // 
+double angle; // 
+double valX;
+double valY;
+void setup() {
+  pinMode(inX, INPUT);
+  pinMode(inY, INPUT);
+  pinMode(butt, INPUT);
+  pinMode(lb, OUTPUT);
+  pinMode(lf, OUTPUT);
+  pinMode(rf, OUTPUT);
+  pinMode(rb, OUTPUT);
+  Serial.begin(9600);
+}
+
+void ff(){
+  Serial.println("FWD");
+}
+void bb(){
+  Serial.println("BWD");
+}
+void rr(){
+  Serial.println("Right");
+}
+void ll(){
+  Serial.println("Left");
+}
+void sto(){
+ Serial.println("STOPPED");
+}
+ void fr(){
+  Serial.println("FR");
+}
+void br(){
+  Serial.println("BR");
+}
+
+void bl(){
+  Serial.println("BL");
+}
+
+void fl(){
+  Serial.println("FL");
+}
+
+void ffr(){
+  Serial.println("FFR");
+}
+
+void frr(){
+  Serial.println("FRR");
+  }
+
+void brr(){
+  Serial.println("BRR");
+}
+
+void bbr(){
+  Serial.println("BBR");
+  }
+
+void bbl(){
+  Serial.println("BBL");
+}
+
+void bll(){Serial.println("BLL");
+}
+
+void fll(){
+  Serial.println("FLL");
+}
+
+void ffl(){
+  Serial.println("FFL");
+}
+
+
+
+void fq(double valx, double valy ){
+  if(valx > valy) frr();
+  else if (valx < valy) ffr();
+  else fr();
+}
+void squ(double valx, double valy){
+  valx = -valx;
+  if(valx > valy) fll();
+  else if(valx < valy) ffl();
+  else fl();
+}
+void tq(double valx, double valy){
+  valx = -valx;
+  valy = -valy;
+  if(valx > valy)bll();
+  else if(valx < valy) bbl();
+  else bl();
+}
+
+void fqu(double valx, double valy){
+  valy = -valy;
+  if(valx > valy)brr();
+  else if(valx < valy) bbr();
+  else br();
+}
+
+void loop() {
+  valX = analogRead(inX)-521; // -512 to make it origin (0,0) instead of (512,512)
+  valY = analogRead(inY)-521;
+  if(valX > 256 && valY > 256)fq(valX, valY);
+  else if(valX < -256 && valY > 256  )squ(valX, valY);
+  else if (valX < -256 && valY < -256) tq(valX, valY);
+  else if(valX > 256 && valY < -256) fqu(valX, valY);
+  else if (valY > 256 && valX < 256 && valX > -256) ff();
+  else if (valY < -256 && valX < 256 && valX > -256) bb();
+  else if (valX > 256 && valY < 256 && valY> -256) rr();
+  else if (valX < -256 && valY < 256 && valY > -256) ll();
+  else if (valX < 256 && valX > -256 && valY > -256 && valY < 256) sto();
+  
+}
