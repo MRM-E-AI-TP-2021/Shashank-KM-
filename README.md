@@ -2,7 +2,7 @@
 Shank's Progress
 
 Finsihed: 
-*Motor-Code
+* Motor-Code
 
 Currently Working on: 
 * Python
