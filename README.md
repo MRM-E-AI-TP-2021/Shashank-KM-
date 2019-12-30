@@ -1,7 +1,7 @@
 # Shashank-KM-
 Shank's Progress
 
-Finsihed: 
+Finished: 
 * Motor-Code
 
 Currently Working on: 
