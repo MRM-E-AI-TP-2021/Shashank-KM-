@@ -111,8 +111,8 @@ void fqu(double valx, double valy){
 }
 
 void loop() {
-  valX = analogRead(inX)-521; // -512 to make it origin (0,0) instead of (512,512)
-  valY = analogRead(inY)-521;
+  valX = analogRead(inX)-512; // -512 to make it origin (0,0) instead of (512,512)
+  valY = analogRead(inY)-512;
   if(valX > 256 && valY > 256)fq(valX, valY);
   else if(valX < -256 && valY > 256  )squ(valX, valY);
   else if (valX < -256 && valY < -256) tq(valX, valY);
