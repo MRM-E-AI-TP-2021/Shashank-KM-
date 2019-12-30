@@ -1,0 +1,173 @@
+#include <math.h>
+const int lf = 3;
+const int lb = 5;
+const int rf = 6;
+const int rb = 9;
+const int inX = A1;
+const int inY = A2; 
+double valX;
+double valY;
+void setup() {
+  pinMode(inX, INPUT);
+  pinMode(inY, INPUT);
+  pinMode(lb, OUTPUT);
+  pinMode(lf, OUTPUT);
+  pinMode(rf, OUTPUT);
+  pinMode(rb, OUTPUT);
+  Serial.begin(9600);
+}
+
+void ff(){
+  analogWrite(lf, 1023);
+  analogWrite(lb, 0);
+  analogWrite(rf, 1023);
+  analogWrite(rb, 0);  
+}
+void bb(){
+  analogWrite(lf, 0);
+  analogWrite(lb, 1023);
+  analogWrite(rf, 0);
+  analogWrite(rb, 1023);
+}
+void rr(){
+  analogWrite(lf, 1023);
+  analogWrite(lb, 0);
+  analogWrite(rf, 0);
+  analogWrite(rb, 1023);
+}
+void ll(){
+  analogWrite(lf, 0);
+  analogWrite(lb, 1023);
+  analogWrite(rf, 1023);
+  analogWrite(rb, 0);
+}
+void sto(){
+  analogWrite(lf, 0);
+  analogWrite(lb, 0);
+  analogWrite(rf, 0);
+  analogWrite(rb, 0); 
+}
+void fr(){
+  analogWrite(lf, 1023);
+  analogWrite(lb, 0);
+  analogWrite(rf, 511);
+  analogWrite(rb, 0);
+}
+void br(){
+  analogWrite(lf, 0);
+  analogWrite(lb, 1023);
+  analogWrite(rf, 0);
+  analogWrite(rb, 511);
+}
+
+void bl(){
+  analogWrite(lf, 0);
+  analogWrite(lb, 511);
+  analogWrite(rf, 0);
+  analogWrite(rb, 1023);
+}
+
+void fl(){
+  analogWrite(lf, 511);
+  analogWrite(lb, 0);
+  analogWrite(rf, 1023);
+  analogWrite(rb, 0);
+}
+
+void ffr(){
+  analogWrite(lf, 1023);
+  analogWrite(lb, 0);
+  analogWrite(rf, 767);
+  analogWrite(rb, 0);
+}
+
+void frr(){
+  analogWrite(lf, 1023);
+  analogWrite(lb, 0);
+  analogWrite(rf, 255);
+  analogWrite(rb, 0);
+}
+
+void brr(){
+  analogWrite(lf, 0);
+  analogWrite(lb, 1023);
+  analogWrite(rf, 0);
+  analogWrite(rb, 255);
+}
+
+void bbr(){
+  analogWrite(lf, 0);
+  analogWrite(lb, 1023);
+  analogWrite(rf, 0);
+  analogWrite(rb, 767);
+}
+
+void bbl(){
+  analogWrite(lf, 0);
+  analogWrite(lb, 767);
+  analogWrite(rf, 0);
+  analogWrite(rb, 1023);
+}
+
+void bll(){
+  analogWrite(lf, 0);
+  analogWrite(lb, 255);
+  analogWrite(rf, 0);
+  analogWrite(rb, 1023);
+}
+
+void fll(){
+  analogWrite(lf, 255);
+  analogWrite(lb, 0);
+  analogWrite(rf, 1023);
+  analogWrite(rb, 0);
+}
+
+void ffl(){
+  analogWrite(lf, 767);
+  analogWrite(lb, 0);
+  analogWrite(rf, 1023);
+  analogWrite(rb, 0);
+}
+
+
+
+void fq(double valx, double valy ){
+  if(valx > valy) frr();
+  else if (valx < valy) ffr();
+  else fr();
+}
+void squ(double valx, double valy){
+  valx = -valx;
+  if(valx > valy) fll();
+  else if(valx < valy) ffl();
+  else fl();
+}
+void tq(double valx, double valy){
+  valx = -valx;
+  valy = -valy;
+  if(valx > valy)bll();
+  else if(valx < valy) bbl();
+  else bl();
+}
+
+void fqu(double valx, double valy){
+  valy = -valy;
+  if(valx > valy)brr();
+  else if(valx < valy) bbr();
+  else br();
+}
+
+void loop() {
+  valX = analogRead(inX)-512; // -512 to make it origin (0,0) instead of (512,512)
+  valY = analogRead(inY)-512;
+  if(valX > 256 && valY > 256)fq(valX, valY);
+  else if(valX < -256 && valY > 256  )squ(valX, valY);
+  else if (valX < -256 && valY < -256) tq(valX, valY);
+  else if(valX > 256 && valY < -256) fqu(valX, valY);
+  else if (valY > 256 && valX < 256 && valX > -256) ff();
+  else if (valY < -256 && valX < 256 && valX > -256) bb();
+  else if (valX > 256 && valY < 256 && valY> -256) rr();
+  else if (valX < -256 && valY < 256 && valY > -256) ll();
+  else if (valX < 256 && valX > -256 && valY > -256 && valY < 256) sto();
+}
