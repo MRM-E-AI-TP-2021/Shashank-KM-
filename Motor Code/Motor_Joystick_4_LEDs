@@ -18,27 +18,27 @@ void setup() {
 }
 
 void ff(){
-  analogWrite(lf, 1023);
+  analogWrite(lf, 255);
   analogWrite(lb, 0);
-  analogWrite(rf, 1023);
+  analogWrite(rf, 255);
   analogWrite(rb, 0);  
 }
 void bb(){
   analogWrite(lf, 0);
-  analogWrite(lb, 1023);
+  analogWrite(lb, 255);
   analogWrite(rf, 0);
-  analogWrite(rb, 1023);
+  analogWrite(rb, 255);
 }
 void rr(){
-  analogWrite(lf, 1023);
+  analogWrite(lf, 255);
   analogWrite(lb, 0);
   analogWrite(rf, 0);
   analogWrite(rb, 1023);
 }
 void ll(){
   analogWrite(lf, 0);
-  analogWrite(lb, 1023);
-  analogWrite(rf, 1023);
+  analogWrite(lb, 255);
+  analogWrite(rf, 255);
   analogWrite(rb, 0);
 }
 void sto(){
@@ -48,41 +48,41 @@ void sto(){
   analogWrite(rb, 0); 
 }
 void fr(){
-  analogWrite(lf, 1023);
+  analogWrite(lf, 255);
   analogWrite(lb, 0);
-  analogWrite(rf, 511);
+  analogWrite(rf, 127);
   analogWrite(rb, 0);
 }
 void br(){
   analogWrite(lf, 0);
-  analogWrite(lb, 1023);
+  analogWrite(lb, 255);
   analogWrite(rf, 0);
-  analogWrite(rb, 511);
+  analogWrite(rb, 127);
 }
 
 void bl(){
   analogWrite(lf, 0);
-  analogWrite(lb, 511);
+  analogWrite(lb, 127);
   analogWrite(rf, 0);
-  analogWrite(rb, 1023);
+  analogWrite(rb, 255);
 }
 
 void fl(){
-  analogWrite(lf, 511);
+  analogWrite(lf, 127);
   analogWrite(lb, 0);
-  analogWrite(rf, 1023);
+  analogWrite(rf, 255);
   analogWrite(rb, 0);
 }
 
 void ffr(){
-  analogWrite(lf, 1023);
+  analogWrite(lf, 255);
   analogWrite(lb, 0);
-  analogWrite(rf, 767);
+  analogWrite(rf, 191);
   analogWrite(rb, 0);
 }
 
 void frr(){
-  analogWrite(lf, 1023);
+  analogWrite(lf, 255);
   analogWrite(lb, 0);
   analogWrite(rf, 255);
   analogWrite(rb, 0);
@@ -90,43 +90,43 @@ void frr(){
 
 void brr(){
   analogWrite(lf, 0);
-  analogWrite(lb, 1023);
+  analogWrite(lb, 255);
   analogWrite(rf, 0);
   analogWrite(rb, 255);
 }
 
 void bbr(){
   analogWrite(lf, 0);
-  analogWrite(lb, 1023);
+  analogWrite(lb, 255);
   analogWrite(rf, 0);
-  analogWrite(rb, 767);
+  analogWrite(rb, 191);
 }
 
 void bbl(){
   analogWrite(lf, 0);
-  analogWrite(lb, 767);
+  analogWrite(lb, 191);
   analogWrite(rf, 0);
-  analogWrite(rb, 1023);
+  analogWrite(rb, 255);
 }
 
 void bll(){
   analogWrite(lf, 0);
   analogWrite(lb, 255);
   analogWrite(rf, 0);
-  analogWrite(rb, 1023);
+  analogWrite(rb, 255);
 }
 
 void fll(){
   analogWrite(lf, 255);
   analogWrite(lb, 0);
-  analogWrite(rf, 1023);
+  analogWrite(rf, 255);
   analogWrite(rb, 0);
 }
 
 void ffl(){
-  analogWrite(lf, 767);
+  analogWrite(lf, 191);
   analogWrite(lb, 0);
-  analogWrite(rf, 1023);
+  analogWrite(rf, 255);
   analogWrite(rb, 0);
 }
 
